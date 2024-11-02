@@ -19,6 +19,8 @@ public record ParallelStagesList(IList<ParallelStages> All)
         var result = new List<ParallelStages>(All) { newParallelStages };
         return new ParallelStagesList(result);
     }
+    
+    public ISet<Stage> AllStages => All.SelectMany(p => p.Stages).ToHashSet();
 
     public virtual bool Equals(ParallelStagesList? other)
     {

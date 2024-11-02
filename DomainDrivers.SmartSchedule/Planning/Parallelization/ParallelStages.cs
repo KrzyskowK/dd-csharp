@@ -15,6 +15,11 @@ public record ParallelStages(ISet<Stage> Stages)
         if (ReferenceEquals(this, other)) return true;
         return Stages.SetEquals(other.Stages);
     }
+    
+    public static ParallelStages Empty()
+    {
+        return new ParallelStages(new HashSet<Stage>());
+    }
 
     public override int GetHashCode()
     {

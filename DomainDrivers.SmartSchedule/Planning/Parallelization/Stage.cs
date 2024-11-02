@@ -11,6 +11,16 @@ public record Stage(string StageName, ISet<Stage> Dependencies, ISet<ResourceNam
         Dependencies.Add(stage);
         return this;
     }
+    
+    public bool HasAllDepenenciesFullfiled(ISet<Stage> stages)
+    {
+        return Dependencies.IsSubsetOf(stages);
+    }
+    
+    public bool OverlapsResources(ISet<Stage> stages)
+    {
+        return Dependencies.IsSubsetOf(stages);
+    }
 
     public string Name
     {
